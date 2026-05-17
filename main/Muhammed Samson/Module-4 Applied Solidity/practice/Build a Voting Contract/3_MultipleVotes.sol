@@ -1,0 +1,45 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.4;
+
+
+// Muhammed Samson learning implementation based on course practice references.
+
+// Demonstrates build a voting contract exercise behavior in a focused contract example.
+
+contract Voting {
+    enum VoteStatus { Absent, Yes, No }
+
+    struct Proposal {
+        address target;
+        bytes data;
+        uint yesCount;
+        uint noCount;
+    }
+
+    Proposal[] public proposals;
+    mapping(uint => mapping(address => VoteStatus)) public votes;
+
+    // Shows how this exercise handles new proposal.
+    function newProposal(address target, bytes calldata data) external {
+        proposals.push(Proposal(target, data, 0, 0));
+    }
+
+    // Shows how this exercise handles cast vote.
+    function castVote(uint proposalId, bool support) external {
+        VoteStatus prev = votes[proposalId][msg.sender];
+
+        if (prev == VoteStatus.Yes) {
+            proposals[proposalId].yesCount--;
+        } else if (prev == VoteStatus.No) {
+            proposals[proposalId].noCount--;
+        }
+
+        if (support) {
+            proposals[proposalId].yesCount++;
+            votes[proposalId][msg.sender] = VoteStatus.Yes;
+        } else {
+            proposals[proposalId].noCount++;
+            votes[proposalId][msg.sender] = VoteStatus.No;
+        }
+    }
+}
