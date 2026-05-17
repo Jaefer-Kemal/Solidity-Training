@@ -80,6 +80,16 @@ main/
 
 ---
 
+## Resources
+
+The following resources are part of the distributed course material and are recommended for all participants:
+
+- **Presentations:** [Alchemy Learn Solidity Presentations](https://github.com/alchemyplatform/learn-solidity-presentations)
+- **Marp Tool (for slide decks):** [Marp](https://marp.app/)
+- **Foundry (Solidity development framework):** [Foundry Book](https://book.getfoundry.sh/)
+
+---
+
 **Thank you, Mr. Yared Tekalegn, for your guidance and support!**
 
 ---
